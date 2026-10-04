@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JeeTracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Productivity dashboard</p>
+          <h1>JeeTracker</h1>
+        </div>
+        <div class="status-pill" id="dateBadge">Loading date...</div>
+      </header>
+
+      <main class="dashboard">
+        <section class="hero card">
+          <div>
+            <p class="label">Today</p>
+            <h2>Stay on top of what matters.</h2>
+          </div>
+          <div class="hero-cta">
+            <span id="focusLabel">3 tasks left</span>
+          </div>
+        </section>
+
+        <section class="stats-grid">
+          <article class="stat-card card">
+            <p>Open tasks</p>
+            <strong id="openTasks">0</strong>
+          </article>
+          <article class="stat-card card">
+            <p>Completed</p>
+            <strong id="completedTasks">0</strong>
+          </article>
+          <article class="stat-card card">
+            <p>Completion rate</p>
+            <strong id="completionRate">0%</strong>
+          </article>
+        </section>
+
+        <section class="panel-grid">
+          <div class="card form-card">
+            <div class="card-header">
+              <h3>Add a task</h3>
+            </div>
+
+            <form id="taskForm">
+              <label>
+                <span>Task name</span>
+                <input id="taskName" type="text" maxlength="80" placeholder="Write a task" required />
+              </label>
+
+              <div class="field-row">
+                <label>
+                  <span>Priority</span>
+                  <select id="taskPriority">
+                    <option value="High">High</option>
+                    <option value="Medium" selected>Medium</option>
+                    <option value="Low">Low</option>
+                  </select>
+                </label>
+
+                <label>
+                  <span>Category</span>
+                  <select id="taskCategory">
+                    <option value="Work">Work</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Health">Health</option>
+                    <option value="Learning">Learning</option>
+                  </select>
+                </label>
+              </div>
+
+              <button type="submit">Add task</button>
+            </form>
+          </div>
+
+          <div class="card task-card">
+            <div class="card-header">
+              <h3>Task list</h3>
+            </div>
+
+            <ul id="taskList" class="task-list"></ul>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <template id="taskItemTemplate">
+      <li class="task-item">
+        <button class="check-button" type="button" aria-label="Toggle task completion"></button>
+        <div class="task-content">
+          <span class="task-title"></span>
+          <div class="task-meta">
+            <span class="tag priority-tag"></span>
+            <span class="tag category-tag"></span>
+          </div>
+        </div>
+        <button class="delete-button" type="button" aria-label="Delete task">Delete</button>
+      </li>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
